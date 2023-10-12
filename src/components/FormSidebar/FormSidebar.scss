@@ -1,0 +1,77 @@
+@import "@/assets/styles/variables.scss";
+
+.Form_sidebar {
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
+  min-width: 30rem;
+  z-index: 100;
+  min-height: 20rem;
+  background: $neutral-800;
+  border-radius: 0.5rem;
+  padding: 2rem;
+
+  .header {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: $neutral-200;
+    display: flex;
+    margin-bottom: 2rem;
+  }
+
+  .form_container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .radios_container {
+      display: flex;
+      flex-wrap: wrap;
+
+      .radio_item {
+        padding: 0.6rem 1.5rem;
+        border: 1px solid $neutral-600;
+        font-size: 1.4rem;
+        text-align: center;
+        width: 50%;
+        border-radius: 0.4rem 0 0 0.4rem;
+
+        &:last-child {
+          border-radius: 0 0.4rem 0.4rem 0;
+          border-left: none;
+        }
+
+        &.active {
+          background: $primary-blue;
+          color: $neutral-100;
+
+          &:last-child {
+            border-left: 1px solid $primary-blue;
+          }
+        }
+      }
+    }
+
+    .form_item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      label {
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: $neutral-400;
+      }
+
+      input {
+        border-radius: 0.4rem;
+        border: 1px solid $neutral-600;
+        background: $neutral-700;
+        padding: 0.8rem 1rem;
+        font-size: 1.4rem;
+        color: $neutral-300;
+        outline: none;
+      }
+    }
+  }
+}

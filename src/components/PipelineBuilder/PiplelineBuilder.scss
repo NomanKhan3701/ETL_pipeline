@@ -1,0 +1,7 @@
+@import "@/assets/styles/variables.scss";
+
+.Pipleline_builder {
+  width: calc(100vw - $sidebar-width);
+  height: 100vh;
+  background: $neutral-700;
+}

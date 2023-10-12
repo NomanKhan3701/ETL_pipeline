@@ -1,0 +1,66 @@
+@import "@/assets/styles/variables.scss";
+
+.Sidebar {
+  width: $sidebar-width;
+  background: $neutral-800;
+  padding: 1.6rem;
+
+  .search {
+    margin-bottom: 3rem;
+    input {
+      width: 100%;
+      padding: 1rem;
+      height: 100%;
+      font-size: 1.4rem;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: $neutral-300;
+      border: 1px solid $neutral-600;
+      border-radius: 0.5rem;
+    }
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: $neutral-300;
+    margin-bottom: 1.6rem;
+  }
+
+  .Nodes_container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+
+    .Node {
+      display: flex;
+      flex-direction: column;
+      width: 8rem;
+      height: 8rem;
+      border-radius: 0.5rem;
+      background: $neutral-700;
+      border: 1px solid $neutral-600;
+      cursor: grab;
+
+      .img {
+        display: grid;
+        place-items: center;
+        height: 100%;
+
+        svg {
+          font-size: 2rem;
+          color: $neutral-400;
+        }
+      }
+
+      .label {
+        padding: 0.5rem 0.5rem;
+        font-size: 1.2rem;
+        text-align: center;
+        color: $neutral-300;
+        border-top: 1px solid $neutral-600;
+      }
+    }
+  }
+}

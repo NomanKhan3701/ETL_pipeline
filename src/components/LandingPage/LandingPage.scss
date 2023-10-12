@@ -1,0 +1,39 @@
+@import "@/assets/styles/variables.scss";
+
+.Landing_page {
+  position: relative;
+
+  .hero_section {
+    height: calc(100vh - $navbar-height);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+    align-items: flex-start;
+
+    h1 {
+      font-size: 5rem;
+      line-height: 1.4;
+      //   text-align: center;
+    }
+
+    .desc {
+      font-size: 2rem;
+      line-height: 1.4;
+      margin-top: 4rem;
+      font-weight: 600;
+      color: $neutral-400;
+    }
+
+    .btn_primary {
+      font-size: 1.6rem;
+      font-weight: 600;
+      padding: 1.2rem 4rem;
+      margin-top: 6rem;
+      border-radius: 20rem;
+      background: $primary-purple;
+      color: $neutral-000;
+      cursor: pointer;
+    }
+  }
+}

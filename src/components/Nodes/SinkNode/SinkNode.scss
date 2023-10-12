@@ -1,0 +1,43 @@
+@import "@/assets/styles/variables.scss";
+
+.Sink__node {
+  display: flex;
+  background: $neutral-800;
+  border-radius: 0.5rem;
+  border: 1px solid $neutral-600;
+  overflow: hidden;
+  z-index: 50;
+
+  .image {
+    padding: 1rem;
+    width: max-content;
+    display: grid;
+    place-items: center;
+
+    svg {
+      font-size: 1.6rem;
+      color: $primary-green;
+    }
+  }
+
+  .btn_wrapper {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem;
+    width: 100%;
+
+    .primary_btn {
+      font-size: 1.3rem;
+      padding: 0.5rem 2rem;
+      border-radius: 0.2rem;
+      background: $primary-blue;
+      color: $neutral-000;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      gap: 1rem;
+    }
+  }
+}

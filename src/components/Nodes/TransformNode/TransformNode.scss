@@ -1,0 +1,10 @@
+@import "@/assets/styles/variables.scss";
+
+.Transformer__node {
+  display: flex;
+  background: $neutral-800;
+  border-radius: 0.5rem;
+  border: 1px solid $neutral-600;
+  width: 25rem;
+  z-index: 10000;
+}

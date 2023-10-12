@@ -1,0 +1,79 @@
+/* primary color */
+$primary-pink: #e04491;
+$primary-purple: #b688ff;
+$primary-dark-purple: #47129f;
+$primary-dark-blue: #1a202a;
+$primary-blue: #3045c9;
+$primary-green: #4ac97e;
+$primary-red: #d0302f;
+$primary-orange: #e26f20;
+$primary-yellow: #e2c820;
+
+$primary-bg: #101828;
+
+/* secondary */
+$secondary-purple: #e9e9fe;
+$secondary-red: #e0d0d0;
+$secondary-yellow: #e0dcd0;
+
+/* tint */
+$tint-pink: #fdf7ff;
+
+/* neutral */
+$neutral-000: #ffffff;
+$neutral-100: #f4f4f5;
+$neutral-200: #e8e9e9;
+$neutral-300: #cdcecf;
+$neutral-400: #9b9c9e;
+$neutral-500: #686b6e;
+$neutral-600: #363a3d;
+$neutral-700: #131619;
+$neutral-800: #0e0f10;
+
+/* box-shadow */
+$box-shadow-light: 0px 0.2rem 0.4rem rgba(0, 0, 0, 0.15);
+
+/* break points */
+$break-point-desktop: 1400px;
+$break-point-desktop-sm: 1200px;
+$break-point-tab-lg: 992px;
+$break-point-tab: 850px;
+$break-point-tab-sm: 768px;
+$break-point-mobile-lg: 650px;
+$break-point-mobile: 576px;
+$break-point-mobile-sm: 430px;
+$break-point-mobile-xs: 365px;
+
+/*radius */
+$br-0: 2px;
+$br-1: 4px;
+$br-2: 6px;
+$br-3: 8px;
+$br-4: 40px;
+
+/* z-index */
+$z-cursor: 400;
+$z-sidebar: 300;
+$z-projects: 200;
+$z-chat-footer: 100;
+$z-navbar: 150;
+
+/* ease functions */
+$e-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.2);
+$e-smooth: cubic-bezier(0.2, 0.5, 0, 1);
+$e-ease: ease;
+
+/* animation time */
+$scroll-time: 0.2s;
+$chat-open-time: 0.3s;
+
+/* height */
+$navbar-height: 5.7rem;
+
+/* width */
+$sidebar-width: 25rem;
+
+/* padding */
+$pd-container: 3rem;
+$pd-container-tab: 3rem;
+$pd-container-sm: 3rem;

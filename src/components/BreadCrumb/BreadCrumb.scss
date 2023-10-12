@@ -1,0 +1,31 @@
+@import "@/assets/styles/variables.scss";
+
+.Bread_crumb {
+  display: flex;
+  margin-bottom: 4rem;
+
+  .cumb_item {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: $neutral-600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.2s ease-in-out;
+
+    .name {
+      &.last {
+        color: $neutral-300;
+      }
+    }
+
+    &:hover {
+      color: $neutral-600;
+    }
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+}

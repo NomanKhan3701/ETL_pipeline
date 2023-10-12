@@ -1,0 +1,76 @@
+@import "./variables";
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+
+  /* Take rems according to this font 1rem = 10px */
+  @media screen and (max-width: 2300px) {
+    font-size: 70%;
+  }
+
+  @media screen and (max-width: 2300px) and (min-width: 620px) {
+    font-size: 62.5%;
+  }
+
+  @media screen and (max-width: 620px) {
+    font-size: 57%;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background: $primary-bg;
+  color: $neutral-000;
+  min-height: 100vh;
+
+  &::-webkit-scrollbar {
+    height: 5px;
+    width: 7.5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $neutral-500;
+    border-radius: 50px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #495a62;
+  }
+}
+
+.App {
+  min-height: calc(100vh - $navbar-height);
+  display: flex;
+  flex-direction: column;
+}
+
+.Main__container {
+  display: flex;
+}
+
+.Right__content_container {
+  background: $neutral-100;
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem 4rem;
+  padding-bottom: 10rem;
+}
+
+input[type="datetime-local"] {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}

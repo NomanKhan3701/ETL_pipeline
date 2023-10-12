@@ -1,0 +1,50 @@
+@import "@/assets/styles/variables.scss";
+
+.File_upload {
+  margin-left: auto;
+  margin-right: auto;
+
+  .Drag_drop_container {
+    width: 100%;
+    padding: 20px;
+    height: 18rem;
+    border: 2px dashed $neutral-600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    place-items: center;
+
+    .or {
+      font-size: 1.2rem;
+      color: $neutral-300;
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: $neutral-300;
+      text-align: center;
+    }
+
+    .browse_btn {
+      padding: 5px 15px;
+      background: $primary-blue;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      width: max-content;
+      font-size: 1.2rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &.active {
+      background: rgb(204, 204, 204);
+      border: 2px solid black;
+    }
+  }
+}

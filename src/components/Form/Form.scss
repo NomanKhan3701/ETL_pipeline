@@ -1,0 +1,153 @@
+@import "@/assets/styles/variables.scss";
+
+.Form_wrapper {
+  display: flex;
+
+  .loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    .dot {
+      min-width: 1rem;
+      min-height: 1rem;
+      background: $neutral-200;
+      border-radius: 50%;
+      margin: 0 0.5rem;
+      opacity: 0.3;
+      animation: fade 0.5s ease-in-out infinite alternate;
+
+      &:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+
+      &:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0.3;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+
+  .Form_container {
+    margin: 0 auto;
+    width: 70rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background: $neutral-000;
+    padding: 3rem 5rem;
+    border-radius: 1rem;
+    box-shadow: $box-shadow-light;
+
+    .back {
+      color: $primary-purple;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      svg {
+        margin-right: 1rem;
+        font-size: 2.8rem;
+        transform: translateY(0.1rem);
+      }
+    }
+
+    .flex_group {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+
+      .form_item {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        label {
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: $neutral-300;
+          text-transform: capitalize;
+        }
+
+        input {
+          height: 4rem;
+          border-radius: 0.4rem;
+          width: 100%;
+          border: 1px solid $neutral-200;
+          padding: 0 1.5rem;
+          font-size: 1.6rem;
+          font-weight: 500;
+          color: $neutral-500;
+          outline: none;
+          transition: all $scroll-time $e-smooth;
+
+          &:disabled {
+            background: $neutral-100;
+            color: $neutral-300;
+            cursor: not-allowed;
+          }
+
+          &::placeholder {
+            text-transform: capitalize;
+          }
+
+          &:focus {
+            border-color: $primary-purple;
+          }
+        }
+      }
+
+      .modal_input {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        border: 1px solid $neutral-200;
+        border-radius: 0.4rem;
+        padding: 0 1.5rem;
+        height: 4rem;
+        width: 100%;
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: $neutral-500;
+        cursor: pointer;
+
+        .placeholder {
+          color: $neutral-300;
+        }
+      }
+
+      .form_submit {
+        font-size: 1.4rem;
+        font-weight: 600;
+        padding: 1.4rem 4rem;
+        margin-top: 1rem;
+        border-radius: 0.4rem;
+        text-align: center;
+        background: $primary-purple;
+        color: $neutral-000;
+        cursor: pointer;
+        width: 20rem;
+        height: 4.6rem;
+      }
+    }
+  }
+}
