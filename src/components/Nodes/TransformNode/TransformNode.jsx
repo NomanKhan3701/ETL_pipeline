@@ -3,6 +3,7 @@ import "./TransformNode.scss";
 import { Handle, Position } from "reactflow";
 import { LuFileJson2 } from "react-icons/lu";
 import Dropdown from "@/components/Dropdown/Dropdown";
+import { TRANSFORM_NODE } from "@/shared/constants";
 
 const TransformNode = () => {
   const [value, setValue] = useState("");
@@ -19,7 +20,7 @@ const TransformNode = () => {
   ];
 
   return (
-    <div className="Transformer_container">
+    <div className="Transformer_container" datatype={TRANSFORM_NODE}>
       <Handle type="target" position={Position.Top} />
       <div className="Transformer__node">
         <Dropdown

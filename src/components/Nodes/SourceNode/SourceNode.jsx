@@ -4,6 +4,7 @@ import { Handle, Position } from "reactflow";
 import { LuFileJson2 } from "react-icons/lu";
 import { useDispatch } from "react-redux";
 import * as actions from "@/store/actions";
+import { SOURCE_NODE } from "@/shared/constants";
 
 const SourceNode = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const SourceNode = () => {
   return (
     <div
       className="Source_container"
+      datatype={SOURCE_NODE}
       onClick={() => {
         dispatch(
           actions.setFormSidebar({

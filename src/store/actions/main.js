@@ -7,3 +7,17 @@ export const setFormSidebar = (data) => {
         type: data.type,
     }
 }
+
+export const setNodes = (data) => {
+    return {
+        type: actionTypes.SET_NODES,
+        data: data,
+    }
+}
+
+export const setEdges = (data) => {
+    return {
+        type: actionTypes.SET_EDGES,
+        data: data,
+    }
+}

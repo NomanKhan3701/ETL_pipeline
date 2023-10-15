@@ -1,119 +1,112 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 import "./PiplelineBuilder.scss";
 import "reactflow/dist/style.css";
 import "reactflow/dist/base.css";
 import SourceNode from "../Nodes/SourceNode/SourceNode";
 import TransformNode from "../Nodes/TransformNode/TransformNode";
 import SinkNode from "../Nodes/SinkNode/SinkNode";
-import ReactFlow, { Background, Panel } from "reactflow";
+import ReactFlow, {
+  ReactFlowProvider,
+  Background,
+  Controls,
+  Panel,
+  addEdge,
+  applyEdgeChanges,
+  applyNodeChanges,
+} from "reactflow";
 import "reactflow/dist/style.css";
-
-const initialNodes = [
-  {
-    id: "1",
-    type: "sourceNode",
-    position: { x: 100, y: 150 },
-    data: { value: 123 },
-  },
-  {
-    id: "2",
-    type: "transformerNode",
-    position: { x: 150, y: 250 },
-    data: { label: "2" },
-  },
-  {
-    id: "3",
-    type: "sinkNode",
-    position: { x: 100, y: 400 },
-    data: { label: "3" },
-  },
-];
-const initialEdges = [
-  { id: "e1-2", source: "1", target: "2" },
-  {
-    id: "el-3",
-    source: "2",
-    target: "3",
-  },
-];
+import {
+  SINK_NODE,
+  SOURCE_NODE,
+  TRANSFORM_NODE,
+  nodeTypeData,
+} from "@/shared/constants";
+import { useDispatch, useSelector } from "react-redux";
+import * as actions from "@/store/actions";
+import { v4 as uuidv4 } from "uuid";
 
 const PipelineBuilder = () => {
-  const [nodes, setNodes] = useState(initialNodes);
-  const [edges, setEdges] = useState(initialEdges);
+  const reactFlowWrapper = useRef(null);
+  const nodes = useSelector((state) => state.main.nodes);
+  const edges = useSelector((state) => state.main.edges);
+  const dispatch = useDispatch();
   const nodeTypes = useMemo(
     () => ({
-      sourceNode: SourceNode,
-      transformerNode: TransformNode,
-      sinkNode: SinkNode,
+      [SOURCE_NODE]: SourceNode,
+      [TRANSFORM_NODE]: TransformNode,
+      [SINK_NODE]: SinkNode,
     }),
     []
   );
+  const [reactFlowInstance, setReactFlowInstance] = useState(null);
 
-  const onNodesChange = useCallback(
-    (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
-    [setNodes]
-  );
-  const onEdgesChange = useCallback(
-    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    [setEdges]
-  );
-  const onConnect = useCallback(
-    (connection) => setEdges((eds) => addEdge(connection, eds)),
-    [setEdges]
-  );
-
-  const addEdge = (connection, eds) => {
-    eds.push({
-      id: `e${connection.source}-${connection.target}`,
-      source: connection.source,
-      target: connection.target,
-    });
-    return eds;
+  const onNodesChange = (changes) => {
+    const newNodes = applyNodeChanges(changes, nodes);
+    dispatch(actions.setNodes(newNodes));
   };
 
-  // console.log(nodes);
-
-  const applyNodeChanges = (changes, nds) => {
-    console.log(changes);
-    changes.forEach((change) => {
-      if (change.type === "add") {
-        nds.push(change.node);
-      } else if (change.type === "delete") {
-        const index = nds.findIndex((node) => node.id === change.node.id);
-        nds.splice(index, 1);
-      } else if (change.type === "update") {
-        const index = nds.findIndex((node) => node.id === change.node.id);
-        nds[index] = change.node;
-      }
-    });
-    return nds;
+  const onEdgesChange = (changes) => {
+    const newEdges = applyEdgeChanges(changes, edges);
+    dispatch(actions.setEdges(newEdges));
   };
 
-  const applyEdgeChanges = (changes, eds) => {
-    changes.forEach((change) => {
-      if (change.type === "add") {
-        eds.push(change.edge);
-      } else if (change.type === "delete") {
-        const index = eds.findIndex((edge) => edge.id === change.edge.id);
-        eds.splice(index, 1);
-      }
-    });
-    return eds;
+  const onConnect = (changes) => {
+    const newEdge = {
+      id: uuidv4(),
+      source: changes.source,
+      target: changes.target,
+      animated: true,
+    };
+    dispatch(actions.setEdges([...edges, newEdge]));
   };
+
+  const handleDrop = (event) => {
+    event.preventDefault();
+
+    const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
+    const type = event.dataTransfer.getData("application/reactflow");
+
+    // check if the dropped element is valid
+    if (typeof type === "undefined" || !type) {
+      return;
+    }
+
+    const position = reactFlowInstance.project({
+      x: event.clientX - reactFlowBounds.left,
+      y: event.clientY - reactFlowBounds.top,
+    });
+    const newNode = {
+      id: uuidv4(),
+      type: type,
+      position,
+      data: nodeTypeData[type].data,
+    };
+    dispatch(actions.setNodes([...nodes, newNode]));
+  };
+
+  const onDragOver = useCallback((event) => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
+  }, []);
 
   return (
-    <div className="Pipleline_builder">
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
-        nodeTypes={nodeTypes}
-      >
-        <Background color="#fff" variant={"dots"} />
-      </ReactFlow>
-    </div>
+    <ReactFlowProvider>
+      <div className="Pipleline_builder" ref={reactFlowWrapper}>
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          nodeTypes={nodeTypes}
+          onConnect={onConnect}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
+          onInit={setReactFlowInstance}
+          onDrop={handleDrop}
+          onDragOver={onDragOver}
+        >
+          <Background color="#fff" variant={"dots"} />
+        </ReactFlow>
+      </div>
+    </ReactFlowProvider>
   );
 };
 

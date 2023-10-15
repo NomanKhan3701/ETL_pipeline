@@ -11,4 +11,6 @@ export {
 
 export {
     setFormSidebar,
+    setNodes,
+    setEdges,
 } from './main';
