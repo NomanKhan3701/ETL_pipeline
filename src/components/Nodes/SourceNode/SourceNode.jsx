@@ -4,13 +4,13 @@ import { Handle, Position } from "reactflow";
 import { LuFileJson2 } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "@/store/actions";
-import { SOURCE_NODE } from "@/shared/constants";
+import { SOURCE_NODE, methodOption, typeOptions } from "@/shared/constants";
 
 const SourceNode = ({ id, data }) => {
   const dispatch = useDispatch();
-  const onChange = (event) => {
-    console.log(event.target.value);
-  };
+  const currentMethod = methodOption.find((item) => {
+    return item.name == data.method;
+  });
 
   return (
     <div
@@ -29,13 +29,23 @@ const SourceNode = ({ id, data }) => {
       <Handle type="target" position={Position.Top} />
       <div className="Source__node">
         <div className="image">
-          <LuFileJson2 />
+          {currentMethod?.Icon ? (
+            <currentMethod.Icon color={currentMethod?.color} />
+          ) : (
+            <LuFileJson2 />
+          )}
         </div>
         <div className="input">
-          <div className="file_name">{data?.path}</div>
+          <div className="file_name">
+            {data.path
+              ? data.path
+              : data.method
+              ? "Enter a path"
+              : "Select a source"}
+          </div>
         </div>
       </div>
-      <Handle type="source" position={Position.Bottom} id="a" />
+      <Handle type="source" position={Position.Bottom} />
     </div>
   );
 };

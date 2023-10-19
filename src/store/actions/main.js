@@ -53,7 +53,7 @@ export const handleNodeValueChange = (nodeId, data, nodeType) => {
                                 : method
                                     ? method
                                     : newNodes[index].data.method,
-                        path: path ? path : newNodes[index].data.path,
+                        path: path || path == "" ? path : newNodes[index].data.path,
                     },
                 };
                 newNodes[index] = newNode;
