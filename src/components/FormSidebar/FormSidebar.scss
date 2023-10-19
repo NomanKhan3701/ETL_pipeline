@@ -10,6 +10,27 @@
   background: $neutral-800;
   border-radius: 0.5rem;
   padding: 2rem;
+  transform: translateX(100%);
+  transition: transform 0.2s ease-in-out;
+
+  &.show {
+    transform: translateX(0);
+  }
+
+  .cross {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: $neutral-400;
+    height: 1.8rem;
+    width: 1.8rem;
+    border: 1px solid $neutral-400;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+  }
 
   .header {
     font-size: 1.6rem;
@@ -35,6 +56,7 @@
         text-align: center;
         width: 50%;
         border-radius: 0.4rem 0 0 0.4rem;
+        cursor: pointer;
 
         &:last-child {
           border-radius: 0 0.4rem 0.4rem 0;

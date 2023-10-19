@@ -18,14 +18,14 @@ const FormDropdown = ({ data = [], placeholder, value, setValue }) => {
               className={"option" + ` ${value === item.name ? "active" : ""}`}
               onClick={() => setValue(item.name)}
             >
-              {item.icon && (
+              {item.Icon && (
                 <div
                   className="icon"
                   style={{
                     color: item.color,
                   }}
                 >
-                  {item.icon}
+                  {<item.Icon />}
                 </div>
               )}
               {item.name}

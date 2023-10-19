@@ -13,4 +13,6 @@ export {
     setFormSidebar,
     setNodes,
     setEdges,
+    clearForm,
+    handleNodeValueChange
 } from './main';
