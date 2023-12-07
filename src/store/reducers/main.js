@@ -14,7 +14,7 @@ const initialState = {
             type: SOURCE_NODE,
             position: { x: 100, y: 150 },
             data: {
-                sourceType: STREAM,
+                sourceType: BATCH,
                 method: "",
                 path: "",
             },
@@ -29,7 +29,7 @@ const initialState = {
             id: "3",
             type: SINK_NODE,
             position: { x: 100, y: 400 },
-            data: { path: "" },
+            data: { path: "abs" },
         },
     ],
     edges: [
@@ -41,6 +41,18 @@ const initialState = {
             animated: true,
         },
     ],
+    types: [
+        {
+            name: "Mongodb",
+            image: '',
+            keys: [
+                {
+                    name: 'host',
+                    type: 'text'
+                }
+            ]
+        }
+    ]
 }
 
 const setFormSidebar = (state, action) => {

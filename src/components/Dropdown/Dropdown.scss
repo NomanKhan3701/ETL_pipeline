@@ -3,8 +3,7 @@
 .Dropdown {
   width: 100%;
   position: relative;
-  z-index: 100;
-  --font-size: 1.3rem;
+  --font-size: 1.2rem;
 
   &.show {
     .options {
@@ -25,6 +24,7 @@
     font-size: var(--font-size);
     font-weight: 500;
     color: $primary-purple;
+    border: 1px solid $neutral-600;
     outline: none;
 
     img {

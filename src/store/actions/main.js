@@ -54,6 +54,7 @@ export const handleNodeValueChange = (nodeId, data, nodeType) => {
                                     ? method
                                     : newNodes[index].data.method,
                         path: path || path == "" ? path : newNodes[index].data.path,
+                        sink: data.sink ? data.sink : newNodes[index].data.sink,
                     },
                 };
                 newNodes[index] = newNode;

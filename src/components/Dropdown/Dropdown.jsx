@@ -3,7 +3,8 @@ import "./Dropdown.scss";
 import useClickOutside from "@/hooks/useClickedOutside";
 import { AiOutlineDown } from "react-icons/ai";
 
-const Dropdown = ({ data = [], placeholder, value, setValue }) => {
+const Dropdown = ({ data = [], placeholder }) => {
+  const [value, setValue] = React.useState("");
   const [show, setShow] = React.useState(false);
   const dropdownRef = React.useRef(null);
   const outside = useClickOutside(dropdownRef, () => setShow(false));

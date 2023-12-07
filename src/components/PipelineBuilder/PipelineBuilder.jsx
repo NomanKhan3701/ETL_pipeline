@@ -29,6 +29,7 @@ const PipelineBuilder = () => {
   const reactFlowWrapper = useRef(null);
   const nodes = useSelector((state) => state.main.nodes);
   const edges = useSelector((state) => state.main.edges);
+  const formSidebarData = useSelector((state) => state.main.form);
   const dispatch = useDispatch();
   const nodeTypes = useMemo(
     () => ({
@@ -82,6 +83,15 @@ const PipelineBuilder = () => {
       data: nodeTypeData[type].data,
     };
     dispatch(actions.setNodes([...nodes, newNode]));
+    if (type === SOURCE_NODE && formSidebarData.show === false) {
+      dispatch(
+        actions.setFormSidebar({
+          show: true,
+          type: SOURCE_NODE,
+          id: newNode.id,
+        })
+      );
+    }
   };
 
   const onDragOver = useCallback((event) => {

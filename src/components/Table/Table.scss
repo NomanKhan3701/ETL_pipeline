@@ -3,42 +3,82 @@
 .Table {
   table {
     width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    border: 1px solid $neutral-200;
-    background: $neutral-000;
+    table-layout: fixed;
+    background: $neutral-700;
     border-radius: 0.8rem;
-    overflow: hidden;
     box-shadow: $box-shadow-light;
     margin-bottom: 4rem;
 
     thead {
-      background: rgb(243, 243, 243);
-      color: $neutral-400;
-      font-size: 1.4rem;
-      font-weight: 500;
       text-align: left;
-      text-transform: uppercase;
-      letter-spacing: 0.1rem;
 
       tr {
         th {
           padding: 1.6rem 2rem;
-          border-bottom: 1px solid $neutral-200;
+          border-bottom: 1px solid $neutral-600;
+          font-size: 1.2rem;
+          font-weight: 500;
+          color: $neutral-000;
+
+          &:first-child {
+            text-align: left;
+          }
+
+          &:last-child {
+            text-align: left;
+          }
         }
       }
     }
 
     tbody {
+      text-align: left;
+
       tr {
         td {
+          background: $neutral-700;
           padding: 1.6rem 2rem;
-          border-bottom: 1px solid $neutral-200;
-          font-size: 1.4rem;
+          font-size: 1.2rem;
           font-weight: 500;
           color: $neutral-400;
+
+          &:first-child {
+            text-align: left;
+          }
         }
       }
+    }
+  }
+
+  .dropdown_wrapper {
+    width: 20rem;
+    max-width: 100%;
+  }
+
+  .icon {
+    cursor: pointer;
+
+    svg {
+      font-size: 2.4rem;
+      color: $primary-green;
+    }
+  }
+
+  .progress_bar {
+    height: 0.8rem;
+    background: $neutral-600;
+    border-radius: 0.4rem;
+    position: relative;
+    overflow: hidden;
+    width: 10rem;
+    
+    .progress {
+      height: 100%;
+      background: $primary-green;
+      border-radius: 0.4rem;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
   }
 

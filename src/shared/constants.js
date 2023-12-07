@@ -19,7 +19,7 @@ export const nodeTypeData = {
     SOURCE_NODE: {
         type: SOURCE_NODE,
         data: {
-            sourceType: STREAM,
+            sourceType: BATCH,
             method: "",
             path: "",
         },

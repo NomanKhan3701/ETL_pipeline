@@ -3,7 +3,13 @@ import "./FormDropdown.scss";
 import useClickOutside from "@/hooks/useClickedOutside";
 import { AiOutlineDown } from "react-icons/ai";
 
-const FormDropdown = ({ data = [], placeholder, value, setValue }) => {
+const FormDropdown = ({
+  data = [],
+  placeholder,
+  value,
+  setValue,
+  sendAll = false,
+}) => {
   const [show, setShow] = React.useState(false);
   const dropdownRef = React.useRef(null);
   const outside = useClickOutside(dropdownRef, () => setShow(false));
@@ -16,7 +22,7 @@ const FormDropdown = ({ data = [], placeholder, value, setValue }) => {
             <div
               key={item.name}
               className={"option" + ` ${value === item.name ? "active" : ""}`}
-              onClick={() => setValue(item.name)}
+              onClick={() => setValue(sendAll ? item : item.name)}
             >
               {item.Icon && (
                 <div
@@ -36,6 +42,8 @@ const FormDropdown = ({ data = [], placeholder, value, setValue }) => {
     );
   };
 
+  console.log(value);
+
   return (
     <div className={"Form_dropdown" + ` ${show ? "show" : ""}`}>
       <div
@@ -43,7 +51,7 @@ const FormDropdown = ({ data = [], placeholder, value, setValue }) => {
         onClick={() => setShow((state) => !state)}
         ref={dropdownRef}
       >
-        <div>{value || placeholder}</div>
+        <div>{(sendAll ? value?.name : value) || placeholder}</div>
         <AiOutlineDown />
       </div>
       <div

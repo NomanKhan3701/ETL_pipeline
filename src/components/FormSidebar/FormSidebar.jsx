@@ -8,7 +8,13 @@ import { BsFiletypeXml } from "react-icons/bs";
 import { FaFileCsv } from "react-icons/fa";
 import FileInput from "../FileInput/FileInput";
 import * as actions from "@/store/actions";
-import { BATCH, STREAM, methodOption, typeOptions } from "@/shared/constants";
+import {
+  BATCH,
+  SINK_NODE,
+  STREAM,
+  methodOption,
+  typeOptions,
+} from "@/shared/constants";
 import { IoClose } from "react-icons/io5";
 
 const FormSidebar = () => {
@@ -36,7 +42,7 @@ const FormSidebar = () => {
       <div className="header">Edit your source</div>
       {formData.id && (
         <div className="form_container">
-          <div className="form_item">
+          {/* <div className="form_item">
             <label>Processing type</label>
 
             <div className="radios_container">
@@ -68,7 +74,7 @@ const FormSidebar = () => {
               </div>
             </div>
             <div className="radios_container"></div>
-          </div>
+          </div> */}
           <div className="form_item">
             <label>Method</label>
             <FormDropdown
@@ -93,6 +99,30 @@ const FormSidebar = () => {
               onChange={(e) => {
                 handleChange({
                   path: e.target.value,
+                });
+              }}
+            />
+          </div>
+          <div className="form_item">
+            <label>Sink</label>
+            <FormDropdown
+              placeholder={"Select a type"}
+              data={nodes
+                .filter(
+                  (node) => node.type === SINK_NODE && node.data.path !== ""
+                )
+                .map((node) => {
+                  return {
+                    name: node.data.path,
+                    value: node.id,
+                  };
+                })}
+              value={currentNode?.sink}
+              sendAll={true}
+              setValue={(value) => {
+                console.log(value);
+                handleChange({
+                  sink: value,
                 });
               }}
             />
